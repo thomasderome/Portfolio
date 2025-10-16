@@ -1,13 +1,15 @@
-    const COMMAND = {"ls": "test"};
+import { virtual_path } from "../data/virtual_path.js";
+import { commands } from "../data/commands.js";
 
-const USER_NAME = "Thomas DEROME";
-const CURRENT = `${USER_NAME}:~/portfolio$`;
+const user_name = "Thomas DEROME";
+var current_path = "~/portfolio";
+var entete = `${user_name}:${current_path}$`;
 
 function setup() {
     const input_command = document.getElementById("input_command");
     const entete_command = document.getElementById("entete_command");
 
-    entete_command.innerText = CURRENT;
+    entete_command.innerText = entete;
 
     input_command.addEventListener("focusout", (event) => {
         const input_command = document.getElementById("input_command");
@@ -32,7 +34,7 @@ function setup() {
 function command_analyse(element) {
     const input_command = document.getElementById("input_command");
 
-    if (element.value in COMMAND) {
+    if (element.value in commands) {
         input_command.classList.remove("unvalid");
         input_command.classList.add("valid");
     } else {    
@@ -42,9 +44,15 @@ function command_analyse(element) {
 }
 
 function command_valid(element) {
-    const history = document.getElementById("history")
-    if (element.value in COMMAND) {
-        console.log(COMMAND[element.value]);
+    if (element.value in commands) {
+        let action = commands[element.value]["action"];
+        action(entete, element);
+
+        element.value = "";
+        
+        const terminal = document.getElementById("terminal");
+        console.log(terminal.scrollTopMax)
+        terminal.scrollTop = terminal.scrollTopMax;
     }
 }
 
