@@ -4,13 +4,12 @@ import { commands } from "../data/commands.js";
 const user_name = "Thomas DEROME";
 let current_path = "~/portfolio";
 let content = calculate_path();
-let entete = `${user_name}:${current_path}$`;
 
 function setup() {
     const input_command = document.getElementById("input_command");
     const entete_command = document.getElementById("entete_command");
 
-    entete_command.innerText = entete;
+    entete_command.innerText = `${user_name}:${current_path}$`;
 
     // auto focus input
     input_command.addEventListener("focusout", (event) => {
@@ -39,39 +38,52 @@ function command_analyse(element) {
     const input_command = document.getElementById("input_command");
 
     if (element.value in commands) {
-        input_command.classList.remove("unvalid");
+        input_command.classList.remove("invalid");
         input_command.classList.add("valid");
     } else {    
         input_command.classList.remove("valid");
-        input_command.classList.add("unvalid");
+        input_command.classList.add("invalid");
     }
 }
 
 function calculate_path(path, content) {
     if (path == undefined) {
-        return calculate_path(current_path.split("/"), virtual_path)
+        return calculate_path(current_path.split("/"), virtual_path);
 
-    } else if (path.length > 0 && path["type"] == "folder") {
-        content = content[path[0]]["children"]
-        path.splice(0,1)
-        return calculate_path(path, content)   
+    } else if (path.length > 0 && content[path[0]]["type"] == "folder") {
+        content = content[path[0]]["children"];
+        path.splice(0,1);
+        return calculate_path(path, content);   
 
-    } else if (path["type"] != "folder") {
-        return content
+    } else if (path.length > 0 && content[path[0]]["type"] != "folder") {
+        return content;
     }
-    return content
+    return content;
 }
 
 function command_valid(element) {
+    const data = {"entete": `${user_name}:${current_path}$`, "element": element, "content": content};
     if (element.value in commands) {
-        let action = commands[element.value]["action"];
-        action(entete, element);
+        const action = commands[element.value]["action"];
+        action(data);
     } else if (element.value in virtual_path) {
-        let action = virtual_path[element.value]["action"];
-        action();
+        const action = virtual_path[element.value]["action"];
+        action(data);
+    } else {
+        const history = document.getElementById("history");
+        const result = document.createElement("div");
+        
+        result.innerHTML = `
+        <span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"].value}</span><br>
+        <span class="invalid">Command invalid</span><br>
+        <span class="invalid">Tapez la commande <command>help</command> pour afficher la liste des commands disponibles!</span>
+        `;
+
+        history.appendChild(result);
     }
 
     element.value = ""; 
+    document.getElementById("entete_command").textContent = `${user_name}:${current_path}$`;
     const terminal = document.getElementById("terminal");
     terminal.scrollTop = terminal.scrollTopMax;
 }
