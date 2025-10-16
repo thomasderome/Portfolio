@@ -2,25 +2,26 @@ const commands = {
     "help": {
         "description": "Liste toute les commandes", 
         "action": 
-        function action(current_path, element) {
+        function action(data) {
             let commands_key= []
             for (const command_key of Object.keys(commands)) {
-                commands_key.push(`${command_key}: ${commands[command_key]['description']}`)
+                commands_key.push(`<command>${command_key}</command>: ${commands[command_key]['description']}`)
             }
             
             const history = document.getElementById("history");
-            let response = document.createElement("div");
+            const response = document.createElement("div");
 
-            let entete = document.createElement("span");
-            entete.textContent = `${current_path} ${element.value}`;
-            response.appendChild(entete)
+            response.innerHTML = `
+            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+            `;
 
             let tableau_response_command = document.createElement("ul");
             for (const text of commands_key) {
                 let li = document.createElement("li");
-                li.textContent = text;
+                li.innerHTML = text;
                 tableau_response_command.appendChild(li);
             }
+            tableau_response_command.classList.add("color_response")
 
             response.appendChild(tableau_response_command)
             history.appendChild(response);
@@ -36,8 +37,22 @@ const commands = {
 
     "ls": {
         "description": "Liste tout les fichiers",
-        "action": function action() {
-            alert("ls");
+        "action": function action(data) {
+            let temp = [];
+            for (const key of Object.keys(data["content"])) {
+                if (data["content"][key]["type"] == "folder") temp.push(`📁 ${key}`);
+                else temp.push(`🖹 ${key}`);
+            }
+
+            const history = document.getElementById("history");
+            const response = document.createElement("div");
+
+            response.innerHTML = `
+            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span><br>
+            <span class="color_response">${temp.join("&nbsp&nbsp&nbsp")}</span>
+            `;
+
+            history.appendChild(response);
         }
     },
     "cd": {
