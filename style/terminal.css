@@ -1,35 +1,60 @@
-body {
-    background-color: cadetblue;
+:root {
+    --back-terminal: #1E1E2E; 
+    --default-color: #CDD6F4; /* Couleur des textes par défaut */
+    --back-site: #11111B; 
+    --green: #A6E3A1; /* Valid */
+    --red:   #F38BA8; /* Invalid */
+    --blue:  #89B4FA; /* Command surlignement */
+    --mauve: #CBA6F7; /* Curseur */
+    --yellow:#F9E2AF; /* Resultat */
+    --cyan:  #94E2D5;
 }
+
+body {
+    background-color: var(--back-site);
+}
+
 
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-items: center;
 }
 
+/*
+TERMINAL APPARENCE ET POSITIONNEMENT
+*/
 #terminal {
     overflow-y: scroll;
-    background-color: #1D1C1A;
+    background-color: var(--back-terminal);
     width: 70%;
     height: 500px;
+    border-radius: 10px;
 }
 
 /*
 HISTORY STYLE
 */
 #history {
-    color: #f4f1d6;
     margin-left: 10px;
+    font-size: 16px;
 }
+
+.color_response { color: var(--default-color); }
+
+command { color: var(--cyan); }
 
 /*
 COMMAND INPUT STYLE
 */
+.entete_color { 
+    color: var(--blue); 
+    font-weight: bold;
+}
+
 #entete_command {
-    color: #cca9dd;
     margin-left: 10px;
+    font-size: 16px;
 }
 
 #input_command {
@@ -39,14 +64,12 @@ COMMAND INPUT STYLE
     border: none;
     background: none;
     outline: none;
-    caret-color: #f4f1d6;
+
+    caret-color: var(--mauve);
     width: calc(100% - 250px);
+    font-size: 16px;
 }
 
-.valid { color: #b0f2b6; }
+.valid { color: var(--green); }
 
-.unvalid { color: #ff6961; }
-
-#result {
-    color: rgb(85, 83, 83);;
-}
+.invalid { color: var(--red); }
