@@ -1,7 +1,20 @@
 const virtual_path = {
     "~": {
-        "/portfolio": {
-            
+        "type": "folder",
+        "children": {
+            "portfolio": {
+                "type": "folder",
+                "children": {
+                    "test": ""
+                }
+            },
+            "test": {
+                "type": "file",
+                "action": 
+                function test() {
+                    alert('test');
+                }
+            }
         }
     }
 }

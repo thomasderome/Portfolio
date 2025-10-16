@@ -16,11 +16,6 @@ body {
     height: 500px;
 }
 
-.input_command {
-    display: flex;
-    flex-direction: row;    
-}
-
 /*
 HISTORY STYLE
 */
@@ -45,6 +40,7 @@ COMMAND INPUT STYLE
     background: none;
     outline: none;
     caret-color: #f4f1d6;
+    width: calc(100% - 250px);
 }
 
 .valid { color: #b0f2b6; }
