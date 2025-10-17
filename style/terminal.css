@@ -1,5 +1,5 @@
 :root {
-    --back-terminal: #1E1E2E; 
+    --back-terminal: #1E1E2EBF; 
     --default-color: #CDD6F4; /* Couleur des textes par défaut */
     --back-site: #11111B; 
     --green: #A6E3A1; /* Valid */
@@ -11,7 +11,8 @@
 }
 
 body {
-    background-color: var(--back-site);
+background: #020024;
+background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 
