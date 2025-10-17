@@ -63,9 +63,9 @@ COMMAND INPUT STYLE
 }
 
 #input_command {
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     border: none;
     background: none;
     outline: none;
