@@ -14,7 +14,7 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
 
                                 <pre class="color_response">
 ╔═══════════════════════════════════════════╗
@@ -40,7 +40,7 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
+                            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
 
                             <pre class="color_response">
 Compétences Techniques
@@ -84,7 +84,7 @@ Front-End (HTML, CSS, JS)
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
                                 <pre class="color_response">
 +--[ Projet ]--+
 +--[ Radio-Stream ]----------------------------------+
@@ -164,7 +164,7 @@ Front-End (HTML, CSS, JS)
                             const div = document.createElement("div");
 
                             div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
 
                                 <pre class="color_response">
 Réseaux & Contact
@@ -173,6 +173,54 @@ Réseaux & Contact
 > Mail     : <a href="contact.html">thomas.derome@epitech.eu</a>
                             `;
                             history.appendChild(div);
+                        }
+                    },
+                    "photo": {
+                        "type": "file",
+                        "description": "Affiche mon portrait",
+                        "action":
+                        function action(data) {
+                            const history = document.getElementById("history");
+                            const div = document.createElement("div");
+
+                            div.innerHTML = `
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+
+                                <pre class="color_response">
+                                ++++++                                          
+                          ++++++++###++++++++                                   
+                     ##++++++++##+++++#######++++                               
+                  #+++++++########################+++                           
+                #+++++++++####+#++-----------+######++                          
+              ####++#++++++#+++++---------------##++++                          
+             #+#####+++###+++##+-----------------#+++++                         
+           #+++++###++#++++#+++------------------+++++++                        
+        ++++#+++#+##+++++###+---------------------#+#++++                       
+      ++++++++#+##+++###++##++----------+++++++++++#####++++                    
+      ###++++#+#+++####+#+#++++++-++---++---------++++#++++++                   
+     #####++##+#+++#+###++++--++++++++++++++++++---+#####++++-                  
+     ##++###+##+++##+####++++#+++++---++---------+++###+++++++                  
+    +++#+##++#+##+++####+++++++---#----+---------+-+####+++++-                  
+   ##+++++++#+++#+++####++-------#+-----+---------+-#####++++++--               
+  ##++#+++++##++++++#+##+++#+++-+++------+-#++++----######++++++---             
+ ##++########+##+###+#+#+++-----+++++-+#-----------++####++++++++---            
+ ###+########+####+######++-----++#+++-------------++####++##++++--+            
+ ###+###+#+#+#+###+####+##+------------------------#+#+#++++##+##+--            
+  ###########+##+#######+#++-++++----------+++----+++####+++##++##++++          
+   ##+######+####+##+##+##++++-++++++++++---------+#####+#++##+++##+++          
+   ##################+#####+++---+++-++++---------#####+#++++++++##++++         
+     ###+####++###+#########++++++++++++---------++###+++++#+##++#++-+          
+        #############++######+++++-------------++++###+#+###+##++#++-+          
+            ##################+++--------+-+-++---+########+#+++--#+++          
+            ##+#####+########++#+++++++--++++++---+####+###++#+##+#+            
+           #########+##+#####++++++++++++++-------+####+###+++#++#++            
+           ################+#+++++++++------------+###++###++++++#+             
+             #############+##+++++++++------------+#####+##+#+++++##++          
+               ##########+#-+++----++--------------+#####++#+++++++##++-        
+                #####+##+#+-++++---++---------------+######++##++++##++-+++     
+</pre>
+                                `;
+                                history.appendChild(div);
                         }
                     }
                 }
