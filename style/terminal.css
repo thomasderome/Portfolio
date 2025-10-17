@@ -26,7 +26,7 @@
 @media (min-width: 769px) {
     #terminal {
         width: 60%;
-        height: 50vh;
+        height: 60vh;
     }
 
     #history, #entete_command, #input_command {
