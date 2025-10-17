@@ -1,13 +1,14 @@
 :root {
-    --back-terminal: #1E1E2EBF; 
+    --back-terminal: rgba(24, 26, 27, 0.452); 
     --default-color: #CDD6F4; /* Couleur des textes par défaut */
     --back-site: #11111B; 
+
     --green: #A6E3A1; /* Valid */
     --red:   #F38BA8; /* Invalid */
     --blue:  #89B4FA; /* Entete */
     --mauve: #CBA6F7; /* Curseur */
     --yellow:#F9E2AF; /* Resultat */
-    --cyan:  #94E2D5; /* Command surlignement */    
+    --cyan:  #94E2D5; /* Command surlignement */ 
 }
 
 /* Version téléphone */
@@ -33,12 +34,20 @@
     }
 }
 
-body {
-    background: #020024;
-    background-size: 400% 400%;
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+@keyframes back-anim {
+    0%   { background-position: 0% 100%; }      
+    50% { background-position: 100% 0%; }
+    100% { background-position: 0% 100%;}
 }
 
+body {
+    background-size: 1400% 1400%;
+    animation: back-anim 20s ease infinite;
+    background-image: radial-gradient(circle, 
+        #4c244b 0%, 
+        #2C001E 70%
+    );
+}
 
 .main {
     display: flex;
@@ -56,9 +65,10 @@ TERMINAL APPARENCE ET POSITIONNEMENT
     overflow-y: scroll;
     overflow-x: hidden;
     background-color: var(--back-terminal);
+    backdrop-filter: blur(5%);
     border-radius: 10px;
 
-    transition: width 2s, height 2s;
+    transition: width ease ease, height 0.5s ease;
 }
 
 /*
@@ -107,3 +117,20 @@ COMMAND INPUT STYLE
 .valid { color: var(--green); }
 
 .invalid { color: var(--red); }
+
+/* Presentation */
+.rainbow {
+    background: linear-gradient(40deg, #f38ba8, #f9e2af, #a6e3a1, #94e2d5, #89b4fa, #cba6f7, #f38ba8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#presentation pre {
+    text-align: center;
+}
+
+#presentation span {
+    color: var(--mauve);
+}
+
