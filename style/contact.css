@@ -1,0 +1,14 @@
+body {
+    background-color:#11111B;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#send {
+    width: 20%;
+}

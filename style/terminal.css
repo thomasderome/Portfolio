@@ -4,10 +4,10 @@
     --back-site: #11111B; 
     --green: #A6E3A1; /* Valid */
     --red:   #F38BA8; /* Invalid */
-    --blue:  #89B4FA; /* Command surlignement */
+    --blue:  #89B4FA; /* Entete */
     --mauve: #CBA6F7; /* Curseur */
     --yellow:#F9E2AF; /* Resultat */
-    --cyan:  #94E2D5;
+    --cyan:  #94E2D5; /* Command surlignement */
 }
 
 body {
@@ -47,6 +47,10 @@ command { color: var(--cyan); }
 /*
 COMMAND INPUT STYLE
 */
+#command-line {
+    display: flex;
+}
+
 .entete_color { 
     color: var(--blue); 
     font-weight: bold;
@@ -66,8 +70,9 @@ COMMAND INPUT STYLE
     outline: none;
 
     caret-color: var(--mauve);
-    width: calc(100% - 250px);
     font-size: 16px;
+
+    flex: 1 1 50%;
 }
 
 .valid { color: var(--green); }

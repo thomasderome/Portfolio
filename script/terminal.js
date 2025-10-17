@@ -37,16 +37,17 @@ function setup() {
 function command_analyse(element) {
     const input_command = document.getElementById("input_command");
 
-    if (element.value in commands) {
+    if (element.value in commands || element.value in content) {
         input_command.classList.remove("invalid");
         input_command.classList.add("valid");
+
     } else {    
         input_command.classList.remove("valid");
         input_command.classList.add("invalid");
     }
 }
 
-function calculate_path(path, content) {
+function calculate_path(path, content) { // Fonction recursive pour se déplacer dans le repertoire virtuel
     if (path == undefined) {
         return calculate_path(current_path.split("/"), virtual_path);
 
@@ -66,9 +67,15 @@ function command_valid(element) {
     if (element.value in commands) {
         const action = commands[element.value]["action"];
         action(data);
-    } else if (element.value in virtual_path) {
-        const action = virtual_path[element.value]["action"];
-        action(data);
+
+    } else if (element.value in content) {
+        if (content[element.value]["type"] == "file") { // If file run file
+            let action = content[element.value]["action"];
+            action(data);
+        } else { // Enter in folder
+
+        }
+
     } else {
         const history = document.getElementById("history");
         const result = document.createElement("div");
