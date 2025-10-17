@@ -9,7 +9,6 @@ const commands = {
             }  
             
             for (const file of Object.keys(data["content"])) {
-                console.log(data["content"][file])
                 if (data["content"][file]["type"] == "file") {
                     commands_key.push(`<command>${file}</command>: ${data["content"][file]["description"]}`);
                 }
@@ -19,7 +18,7 @@ const commands = {
             const response = document.createElement("div");
 
             response.innerHTML = `
-            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
             `;
 
             let tableau_response_command = document.createElement("ul");
@@ -57,7 +56,7 @@ const commands = {
             const response = document.createElement("div");
 
             response.innerHTML = `
-            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span><br>
+            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span><br>
             <span class="color_response">${temp.join("&nbsp&nbsp&nbsp")}</span>
             `;
 
@@ -66,8 +65,32 @@ const commands = {
     },
     "cd": {
         "description": "Rentre dans un répertoire",
-        "action": function action() {
+        "action": function action(data) {
+            const arg = data["argument"].join(" ").split("/");
+            let temp_path = data["current"].split("/");
+            
+            for (const chemin of arg) {
+                if (chemin == ".." && temp_path.length > 1) {
+                    temp_path = temp_path.slice(0, temp_path.length - 1);
+                    console.log(temp_path)
+                } else {
+                    temp_path.push(chemin);
+                }
+            }
+            
+            const history = document.getElementById("history");
+            const response = document.createElement("div");
 
+            response.innerHTML = `
+            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span><br>
+            `;
+
+            history.appendChild(response);
+            
+            temp_path = temp_path.join("/");
+            if (temp_path.slice(-1) == "/") temp_path = temp_path.slice(0, temp_path.length - 1)
+        
+            return {"path": temp_path}
         }
     }
 }
