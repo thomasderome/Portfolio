@@ -7,12 +7,36 @@
     --blue:  #89B4FA; /* Entete */
     --mauve: #CBA6F7; /* Curseur */
     --yellow:#F9E2AF; /* Resultat */
-    --cyan:  #94E2D5; /* Command surlignement */
+    --cyan:  #94E2D5; /* Command surlignement */    
+}
+
+/* Version téléphone */
+@media (max-width: 768px) {
+    #terminal {
+        width: 95%; 
+        height: 80vh; 
+    }
+    #history, #entete_command, #input_command {
+        font-size: 15px;
+    }
+}
+
+/* Version pc */
+@media (min-width: 769px) {
+    #terminal {
+        width: 60%;
+        height: 50vh;
+    }
+
+    #history, #entete_command, #input_command {
+        font-size: 16px;
+    }
 }
 
 body {
-background: #020024;
-background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    background: #020024;
+    background-size: 400% 400%;
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
 
@@ -20,6 +44,9 @@ background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%,
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    justify-content: center;
+    height: 95vh;
 }
 
 /*
@@ -27,10 +54,11 @@ TERMINAL APPARENCE ET POSITIONNEMENT
 */
 #terminal {
     overflow-y: scroll;
+    overflow-x: hidden;
     background-color: var(--back-terminal);
-    width: 70%;
-    height: 500px;
     border-radius: 10px;
+
+    transition: width 2s, height 2s;
 }
 
 /*
