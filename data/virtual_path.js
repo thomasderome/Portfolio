@@ -14,7 +14,7 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
 
                                 <pre class="color_response">
 ╔═══════════════════════════════════════════╗
@@ -40,27 +40,31 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+                            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
 
                             <pre class="color_response">
 Compétences Techniques
 ========================
+
 Langage & Frameworks
 --------------------
 Python
 [█████████████████----] 80%
 Flask & discord.py
 [███████████████------] 70%
+
 Domaines
 --------
 Web Scraping (bs4, Requests)
 [█████████████████----] 80%
 Automatisation (Selenium)
 [███████████----------] 50%
+
 Donnée
 ------
 Gestion de BDD (JSON)
 [███████████████------] 70%
+
 Interface
 ---------
 Front-End (HTML, CSS, JS)
@@ -80,7 +84,7 @@ Front-End (HTML, CSS, JS)
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
                                 <pre class="color_response">
 +--[ Projet ]--+
 +--[ Radio-Stream ]----------------------------------+
@@ -100,6 +104,7 @@ Front-End (HTML, CSS, JS)
 |  Tech: Selenium, Flask, HTML/CSS/JS                |
 |                                                    |
 +----------------------------------------------------+
+
 +--[ Bot-JDR ]---------------------------------------+
 |                                                    |
 |  Bot Discord conçu pour le jeu de rôle, permettant |
@@ -159,7 +164,7 @@ Front-End (HTML, CSS, JS)
                             const div = document.createElement("div");
 
                             div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"].value}</span>
+                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]}</span>
 
                                 <pre class="color_response">
 Réseaux & Contact
