@@ -6,8 +6,15 @@ const commands = {
             let commands_key= []
             for (const command_key of Object.keys(commands)) {
                 commands_key.push(`<command>${command_key}</command>: ${commands[command_key]['description']}`)
-            }
+            }  
             
+            for (const file of Object.keys(data["content"])) {
+                console.log(data["content"][file])
+                if (data["content"][file]["type"] == "file") {
+                    commands_key.push(`<command>${file}</command>: ${data["content"][file]["description"]}`);
+                }
+            }
+
             const history = document.getElementById("history");
             const response = document.createElement("div");
 
@@ -16,11 +23,13 @@ const commands = {
             `;
 
             let tableau_response_command = document.createElement("ul");
+
             for (const text of commands_key) {
                 let li = document.createElement("li");
                 li.innerHTML = text;
                 tableau_response_command.appendChild(li);
             }
+
             tableau_response_command.classList.add("color_response")
 
             response.appendChild(tableau_response_command)
