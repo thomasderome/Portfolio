@@ -3,13 +3,12 @@ import { commands } from "../data/commands.js";
 
 const user_name = "Thomas DEROME";
 let current_path = "~/portfolio";
-let content = calculate_path();
+let content = calculate_path(current_path);
 
 function setup() {
     const input_command = document.getElementById("input_command");
-    const entete_command = document.getElementById("entete_command");
 
-    entete_command.innerText = `${user_name}:${current_path}$`;
+    update_entete();
 
     // auto focus input
     input_command.addEventListener("focusout", (event) => {
@@ -36,8 +35,9 @@ function setup() {
 
 function command_analyse(element) {
     const input_command = document.getElementById("input_command");
+    let command_split = element.value.split(" ", 1)[0];
 
-    if (element.value in commands || element.value in content) {
+    if (command_split in commands || command_split in content) {
         input_command.classList.remove("invalid");
         input_command.classList.add("valid");
 
@@ -48,29 +48,47 @@ function command_analyse(element) {
 }
 
 function calculate_path(path, content) { // Fonction recursive pour se déplacer dans le repertoire virtuel
-    if (path == undefined) {
+    if (typeof(path) == "string") {
         return calculate_path(current_path.split("/"), virtual_path);
 
-    } else if (path.length > 0 && content[path[0]]["type"] == "folder") {
+    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] == "folder") {
         content = content[path[0]]["children"];
         path.splice(0,1);
         return calculate_path(path, content);   
 
-    } else if (path.length > 0 && content[path[0]]["type"] != "folder") {
+    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] != "folder") {
         return content;
     }
     return content;
 }
 
-function command_valid(element) {
-    const data = {"entete": `${user_name}:${current_path}$`, "element": element, "content": content};
-    if (element.value in commands) {
-        const action = commands[element.value]["action"];
-        action(data);
+function update_entete() {
+    const entete_command = document.getElementById("entete_command");
+    entete_command.innerText = `${user_name}:${current_path}$`;
+}
 
-    } else if (element.value in content) {
-        if (content[element.value]["type"] == "file") { // If file run file
-            let action = content[element.value]["action"];
+function command_valid(element) {
+    const command_split = element.value.split(" ");
+
+    const data = {"entete": `${user_name}:${current_path}$`, 
+                "element": command_split[0],
+                "argument": command_split.slice(1, command_split.length),
+                "content": content,
+                "current": current_path};
+
+    if (data["element"] in commands) {
+        const action = commands[data["element"]]["action"];
+        const response = action(data);
+        
+        if (typeof(response) == "object" && "path" in response) {
+            current_path = response["path"];
+            content = calculate_path(current_path);
+            update_entete();
+        }
+
+    } else if (data["element"] in content) {
+        if (content[data["element"]]["type"] == "file") { // If file run file
+            let action = content[data["element"]]["action"];
             action(data);
         } else { // Enter in folder
 
@@ -80,8 +98,9 @@ function command_valid(element) {
         const history = document.getElementById("history");
         const result = document.createElement("div");
         
-        result.innerHTML = `
-        <span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"].value}</span><br>
+        if (element.value == "") result.innerHTML = `<span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>`;
+        else result.innerHTML = `
+        <span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>
         <span class="invalid">Command invalid</span><br>
         <span class="invalid">Tapez la commande <command>help</command> pour afficher la liste des commands disponibles!</span>
         `;
