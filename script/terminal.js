@@ -102,7 +102,7 @@ function command_valid(element) {
         else result.innerHTML = `
         <span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>
         <span class="invalid">Command invalid</span><br>
-        <span class="invalid">Tapez la commande <command>help</command> pour afficher la liste des commands disponibles!</span>
+        <span class="invalid">Tapez la commande <code>help</code> pour afficher la liste des commands disponibles!</span>
         `;
 
         history.appendChild(result);

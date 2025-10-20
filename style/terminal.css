@@ -81,7 +81,7 @@ HISTORY STYLE
 
 .color_response { color: var(--default-color); }
 
-command { color: var(--cyan); }
+code { color: var(--cyan); }
 
 /*
 COMMAND INPUT STYLE

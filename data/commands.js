@@ -5,12 +5,12 @@ const commands = {
         function action(data) {
             let commands_key= []
             for (const command_key of Object.keys(commands)) {
-                commands_key.push(`<command>${command_key}</command>: ${commands[command_key]['description']}`)
+                commands_key.push(`<code>${command_key}</code>: ${commands[command_key]['description']}`)
             }  
             
             for (const file of Object.keys(data["content"])) {
                 if (data["content"][file]["type"] == "file") {
-                    commands_key.push(`<command>${file}</command>: ${data["content"][file]["description"]}`);
+                    commands_key.push(`<code>${file}</code>: ${data["content"][file]["description"]}`);
                 }
             }
 
