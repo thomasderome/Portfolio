@@ -15,10 +15,14 @@
 @media (max-width: 768px) {
     #terminal {
         width: 95%; 
-        height: 80vh; 
+        height: 80vh;
+        overflow-x: visible;
     }
     #history, #entete_command, #input_command {
         font-size: 15px;
+    }
+    #window-top {
+        width: 95%;
     }
 }
 
@@ -27,10 +31,14 @@
     #terminal {
         width: 60%;
         height: 60vh;
+        overflow-x: hidden;
     }
 
     #history, #entete_command, #input_command {
         font-size: 16px;
+    }
+    #window-top {
+        width: 60%;
     }
 }
 
@@ -67,12 +75,10 @@ TERMINAL APPARENCE ET POSITIONNEMENT
 */
 #terminal {
     overflow-y: scroll;
-    overflow-x: hidden;
     background-color: var(--back-terminal);
     backdrop-filter: blur(5%);
-    border-radius: 10px;
-
-    transition: width 0.5s ease, height 0.5s ease;
+    border-radius: 0 0 10px 10px;
+    transition: width 1s ease, height 1s ease;
 }
 
 /*
@@ -92,6 +98,7 @@ COMMAND INPUT STYLE
 */
 #command-line {
     display: flex;
+    margin-top: 5px;
 }
 
 .entete_color { 
@@ -141,3 +148,11 @@ COMMAND INPUT STYLE
     color: var(--mauve);
 }
 
+/* Top window */
+#window-top {
+    background-color: gray;
+    height: 20px;
+    opacity: 50%;
+    border-radius: 5px 5px 0 0;
+    transition: width 1s ease, height 1s ease;
+}
