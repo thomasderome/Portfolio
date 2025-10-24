@@ -7,6 +7,7 @@ let content = calculate_path(current_path);
 
 function setup() {
     const input_command = document.getElementById("input_command");
+    let tab_memory = null;
 
     update_entete();
 
@@ -18,24 +19,68 @@ function setup() {
 
     // analyse the command in real time
     input_command.addEventListener("input", (event) => {
-        console.log("command analyse trigger");
-        command_analyse(event.target);
+        tab_memory = null;
+        command_analyse(event.target.value);
     })
 
     // detect if command is send with enter
     input_command.addEventListener("keydown", (event) => {
-        if (event.key == "Enter") {
-            console.log("command valid trigger");
+        if (event.key === "Enter") {
+            tab_memory = null;
             command_valid(event.target);
+        } else if (event.key === "Tab" && !tab_memory) {
+            event.preventDefault();
+            input_command.focus();
+
+            let auto_completion_list= []
+            for (const command_key of Object.keys(commands)) {
+                auto_completion_list.push(`${command_key}`);
+            }
+            for (const file of Object.keys(content)) {
+                if (content[file]["type"] === "file") {
+                    auto_completion_list.push(`${file}`);
+                }
+            }
+
+            const command_start = input_command.value;
+            let verify = true;
+            for (const value of auto_completion_list) {
+                verify = true;
+                for (let index_let = 0; index_let < command_start.length; index_let++) {
+                    console.log(command_start[index_let]);
+                    if (command_start[index_let] !== value[index_let]) {
+                        console.log("trigger")
+                        verify = false;
+                        break
+                    }
+                }
+                console.log(verify, value);
+                if (verify) {
+                    if (!tab_memory) tab_memory = [];
+                    tab_memory.push(value);
+                }
+            }
+
+            if (tab_memory) {
+                input_command.value = tab_memory[0];
+                command_analyse(tab_memory[0]);
+                tab_memory.push(tab_memory.splice(0,1).join());
+            }
+
+        } else if (event.key === "Tab" && tab_memory) {
+            event.preventDefault();
+
+            input_command.value = tab_memory[0];
+            command_analyse(tab_memory[0]);
+
+            tab_memory.push(tab_memory.splice(0,1).join());
         }
     })
-
-    console.log("listener load");
 }
 
-function command_analyse(element) {
+function command_analyse(value) {
     const input_command = document.getElementById("input_command");
-    let command_split = element.value.split(" ", 1)[0];
+    let command_split = value.split(" ", 1)[0];
 
     if (command_split in commands || command_split in content) {
         input_command.classList.remove("invalid");
