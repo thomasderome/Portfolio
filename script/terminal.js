@@ -1,7 +1,7 @@
 import { virtual_path } from "../data/virtual_path.js";
 import { commands } from "../data/commands.js";
 
-const user_name = "Thomas DEROME";
+const user_name = "Thomas-DEROME";
 let current_path = "~/portfolio";
 let content = calculate_path(current_path);
 
