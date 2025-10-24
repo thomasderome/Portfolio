@@ -47,14 +47,11 @@ function setup() {
             for (const value of auto_completion_list) {
                 verify = true;
                 for (let index_let = 0; index_let < command_start.length; index_let++) {
-                    console.log(command_start[index_let]);
                     if (command_start[index_let] !== value[index_let]) {
-                        console.log("trigger")
                         verify = false;
                         break
                     }
                 }
-                console.log(verify, value);
                 if (verify) {
                     if (!tab_memory) tab_memory = [];
                     tab_memory.push(value);

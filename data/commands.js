@@ -72,7 +72,6 @@ const commands = {
             for (const chemin of arg) {
                 if (chemin == ".." && temp_path.length > 1) {
                     temp_path = temp_path.slice(0, temp_path.length - 1);
-                    console.log(temp_path)
                 } else {
                     temp_path.push(chemin);
                 }
