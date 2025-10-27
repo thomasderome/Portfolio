@@ -14,7 +14,6 @@ const commands = {
                 }
             }
 
-            const history = document.getElementById("history");
             const response = document.createElement("div");
 
             response.innerHTML = `
@@ -32,7 +31,7 @@ const commands = {
             tableau_response_command.classList.add("color_response")
 
             response.appendChild(tableau_response_command)
-            history.appendChild(response);
+            print_result(response);
         }
     },
     "clear": {
@@ -52,7 +51,6 @@ const commands = {
                 else temp.push(`🖹 ${key}`);
             }
 
-            const history = document.getElementById("history");
             const response = document.createElement("div");
 
             response.innerHTML = `
@@ -60,7 +58,7 @@ const commands = {
             <span class="color_response">${temp.join("&nbsp&nbsp&nbsp")}</span>
             `;
 
-            history.appendChild(response);
+            print_result(response);
         }
     },
     "cd": {
@@ -76,19 +74,18 @@ const commands = {
                     temp_path.push(chemin);
                 }
             }
-            
-            const history = document.getElementById("history");
+
             const response = document.createElement("div");
 
             response.innerHTML = `
             <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span><br>
             `;
 
-            history.appendChild(response);
+            print_result(response);
             
             temp_path = temp_path.join("/");
-            if (temp_path.slice(-1) === "/") temp_path = temp_path.slice(0, temp_path.length - 1)
-        
+            if (temp_path.slice(-1) === "/") temp_path = temp_path.slice(0, temp_path.length - 1);
+
             return {"path": temp_path}
         }
     }

@@ -10,7 +10,6 @@ const virtual_path = {
                         "description": "Afficher mes informations",
                         "action":
                             function action(data) {
-                                const history = document.getElementById('history');
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
@@ -28,7 +27,7 @@ const virtual_path = {
 ║                  avec du code, jeux vidéo ║
 ╚═══════════════════════════════════════════╝</pre>
                                 `;
-                                history.append(div);
+                                print_result(div);
                             }
                     },
                     "competence": {
@@ -36,7 +35,6 @@ const virtual_path = {
                         "description": "Affcihe mes compétence en programmation",
                         "action":
                             function action(data) {
-                                const history = document.getElementById('history');
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
@@ -72,7 +70,7 @@ Front-End (HTML, CSS, JS)
                             </pre>
                             `;
 
-                                history.append(div);
+                                print_result(div);
                             }
                     },
                     "projet": {
@@ -80,7 +78,6 @@ Front-End (HTML, CSS, JS)
                         "description": "Affiche mes projet personnel",
                         "action":
                             function action(data) {
-                                const history = document.getElementById("history");
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
@@ -152,7 +149,7 @@ Front-End (HTML, CSS, JS)
                                 </pre>
                                 `;
 
-                                history.appendChild(div);
+                                print_result(div);
                             }
                     },
                     "contact": {
@@ -160,7 +157,6 @@ Front-End (HTML, CSS, JS)
                         "description": "Affiche mes contact",
                         "action":
                         function action(data) {
-                            const history = document.getElementById("history");
                             const div = document.createElement("div");
 
                             div.innerHTML = `
@@ -172,7 +168,7 @@ Réseaux & Contact
 > GitHub   : <a href="https://github.com/thomasderome">github.com/thomasderome</a>
 > Mail     : <a href="contact.html">thomas.derome@epitech.eu</a>
                             `;
-                            history.appendChild(div);
+                            print_result(div);
                         }
                     },
                     "photo": {
@@ -180,7 +176,6 @@ Réseaux & Contact
                         "description": "Affiche mon portrait",
                         "action":
                         function action(data) {
-                            const history = document.getElementById("history");
                             const div = document.createElement("div");
 
                             div.innerHTML = `
@@ -220,7 +215,7 @@ Réseaux & Contact
                 #####+##+#+-++++---++---------------+######++##++++##++-+++     
 </pre>
                                 `;
-                                history.appendChild(div);
+                                print_result(div);
                         }
                     }
                 }

@@ -109,6 +109,12 @@ function update_entete() {
     entete_command.innerText = `${user_name}:${current_path}$`;
 }
 
+function print_result(result) {
+    const history = document.getElementById("history");
+    history.appendChild(result);
+}
+window.print_result = print_result;
+
 function command_valid(element) {
     const command_split = element.value.split(" ");
 
