@@ -93,12 +93,12 @@ function calculate_path(path, content) { // Fonction recursive pour se déplacer
     if (typeof(path) == "string") {
         return calculate_path(current_path.split("/"), virtual_path);
 
-    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] == "folder") {
+    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] === "folder") {
         content = content[path[0]]["children"];
         path.splice(0,1);
         return calculate_path(path, content);   
 
-    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] != "folder") {
+    } else if (path.length > 0 && path[0] in content && content[path[0]]["type"] !== "folder") {
         return content;
     }
     return content;
@@ -129,7 +129,7 @@ function command_valid(element) {
         }
 
     } else if (data["element"] in content) {
-        if (content[data["element"]]["type"] == "file") { // If file run file
+        if (content[data["element"]]["type"] === "file") { // If file run file
             let action = content[data["element"]]["action"];
             action(data);
         } else { // Enter in folder
@@ -140,7 +140,7 @@ function command_valid(element) {
         const history = document.getElementById("history");
         const result = document.createElement("div");
         
-        if (element.value == "") result.innerHTML = `<span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>`;
+        if (element.value === "") result.innerHTML = `<span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>`;
         else result.innerHTML = `
         <span class="entete_color">${data["entete"]}</span><span class="invalid">  ${data["element"]} ${data["argument"].join(' ')}</span><br>
         <span class="invalid">Command invalid</span><br>
