@@ -9,7 +9,7 @@ const commands = {
             }  
             
             for (const file of Object.keys(data["content"])) {
-                if (data["content"][file]["type"] == "file") {
+                if (data["content"][file]["type"] === "file") {
                     commands_key.push(`<code>${file}</code>: ${data["content"][file]["description"]}`);
                 }
             }
@@ -48,7 +48,7 @@ const commands = {
         "action": function action(data) {
             let temp = [];
             for (const key of Object.keys(data["content"])) {
-                if (data["content"][key]["type"] == "folder") temp.push(`📁 ${key}`);
+                if (data["content"][key]["type"] === "folder") temp.push(`📁 ${key}`);
                 else temp.push(`🖹 ${key}`);
             }
 
@@ -70,7 +70,7 @@ const commands = {
             let temp_path = data["current"].split("/");
             
             for (const chemin of arg) {
-                if (chemin == ".." && temp_path.length > 1) {
+                if (chemin === ".." && temp_path.length > 1) {
                     temp_path = temp_path.slice(0, temp_path.length - 1);
                 } else {
                     temp_path.push(chemin);
@@ -87,7 +87,7 @@ const commands = {
             history.appendChild(response);
             
             temp_path = temp_path.join("/");
-            if (temp_path.slice(-1) == "/") temp_path = temp_path.slice(0, temp_path.length - 1)
+            if (temp_path.slice(-1) === "/") temp_path = temp_path.slice(0, temp_path.length - 1)
         
             return {"path": temp_path}
         }
