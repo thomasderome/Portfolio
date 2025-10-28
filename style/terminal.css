@@ -93,12 +93,24 @@ HISTORY STYLE
 
 code { color: var(--cyan); }
 
+.projet-card {
+    transition: translate 5s ease;
+}
+
+.select_response {
+    color: var(--default-color);
+    transition: color 0.5s ease;
+}
+.select_response:hover {
+    cursor: grab;
+    color: var(--mauve);
+}
+
 /*
 COMMAND INPUT STYLE
 */
 #command-line {
     display: flex;
-    margin-top: 5px;
 }
 
 .entete_color { 
