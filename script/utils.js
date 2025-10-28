@@ -18,7 +18,6 @@ function select_menu(e, option) {
                 break
             } else if (i !== 0 && !option) {
                 pre[i].classList.add('hide_card');
-                console.log("precedent", option);
                 setTimeout(() => {
                     pre[i-1].style.display = "";
                     setTimeout(
