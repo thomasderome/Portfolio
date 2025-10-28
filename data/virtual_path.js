@@ -95,7 +95,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ Vote-Bot ]--------------------------------------+
 |                                                    |
 |  Automatise les votes sur des serveurs de jeu      |
@@ -105,7 +105,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ Bot-JDR ]---------------------------------------+
 |                                                    |
 |  Bot Discord conçu pour le jeu de rôle, permettant |
@@ -115,7 +115,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ BotyBot ]---------------------------------------+
 |                                                    |
 |  Un bot de modération complet pour Discord,        |
@@ -125,7 +125,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ Bbox-api ]--------------------------------------+
 |                                                    |
 |  Une API Python pour interagir avec la Bbox et     |
@@ -135,7 +135,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ Crackers ]--------------------------------------+
 |                                                    |
 |  Une aplication de scrapping qui recherche et      |
@@ -145,7 +145,7 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
 </pre>
-<pre style="display: none" class="projet-card">
+<pre class="projet-card hide_card">
 +--[ NetflixKode-expired ]---------------------------+
 |                                                    |
 |  Script pour modifier ou retrouver le mot de passe |
