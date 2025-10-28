@@ -82,7 +82,9 @@ Front-End (HTML, CSS, JS)
 
                                 div.innerHTML = `
                                 <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
-                                <pre class="color_response">
+                                <div>
+                                    <div class="color_response card">
+                                <pre class="projet-card">
 +--[ Projet ]--+
 +--[ Radio-Stream ]----------------------------------+
 |                                                    |
@@ -92,7 +94,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: Flask, bs4, Requests, HTML/CSS/JS           |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ Vote-Bot ]--------------------------------------+
 |                                                    |
 |  Automatise les votes sur des serveurs de jeu      |
@@ -101,7 +104,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: Selenium, Flask, HTML/CSS/JS                |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ Bot-JDR ]---------------------------------------+
 |                                                    |
 |  Bot Discord conçu pour le jeu de rôle, permettant |
@@ -110,7 +114,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: discord.py, JSON                            |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ BotyBot ]---------------------------------------+
 |                                                    |
 |  Un bot de modération complet pour Discord,        |
@@ -119,7 +124,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: discord.py, SQLite                          |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ Bbox-api ]--------------------------------------+
 |                                                    |
 |  Une API Python pour interagir avec la Bbox et     |
@@ -128,7 +134,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: Python, Requests                            |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ Crackers ]--------------------------------------+
 |                                                    |
 |  Une aplication de scrapping qui recherche et      |
@@ -137,7 +144,8 @@ Front-End (HTML, CSS, JS)
 |  Tech: Python, bs4, Requests                       |
 |                                                    |
 +----------------------------------------------------+
-
+</pre>
+<pre style="display: none" class="projet-card">
 +--[ NetflixKode-expired ]---------------------------+
 |                                                    |
 |  Script pour modifier ou retrouver le mot de passe |
@@ -147,6 +155,10 @@ Front-End (HTML, CSS, JS)
 |                                                    |
 +----------------------------------------------------+
                                 </pre>
+                                </div>
+                                <a class="select_response suiv" onclick="select_menu(this.parentElement, false)"><--Précédent</a>
+                                <a class="select_response prec" onclick="select_menu(this.parentElement, true)">Suivant--></a>
+                                </div>  
                                 `;
 
                                 print_result(div);
