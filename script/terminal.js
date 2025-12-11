@@ -14,7 +14,7 @@ function setup() {
     // auto focus input
     input_command.addEventListener("focusout", (event) => {
         const input_command = document.getElementById("input_command");
-        input_command.focus();
+        input_command.focus({preventScroll: true});
     })
 
     // analyse the command in real time
