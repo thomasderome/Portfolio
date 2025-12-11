@@ -16,7 +16,7 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+                                <span class="entete_color">${data.entete}</span><span class="valid">  ${data.element} ${data.argument.join(" ")}</span>
 
                                 <pre class="color_response">
 ╔═══════════════════════════════════════════╗
@@ -41,7 +41,7 @@ const virtual_path = {
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                            <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+                            <span class="entete_color">${data.entete}</span><span class="valid">  ${data.element} ${data.argument.join(" ")}</span>
 
                             <pre class="color_response">
 Compétences Techniques
@@ -84,7 +84,7 @@ Front-End (HTML, CSS, JS)
                                 const div = document.createElement('div');
 
                                 div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+                                <span class="entete_color">${data.entete}</span><span class="valid">  ${data.element} ${data.argument.join(" ")}</span>
                                 <div>
                                     <div class="color_response card">
                                     ${gen_card(project).map((item, index) => {
@@ -107,7 +107,7 @@ Front-End (HTML, CSS, JS)
                             const div = document.createElement("div");
 
                             div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+                                <span class="entete_color">${data.entete}</span><span class="valid">  ${data.element} ${data.argument.join(" ")}</span>
 
                                 <pre class="color_response">
 Réseaux & Contact
@@ -126,7 +126,7 @@ Réseaux & Contact
                             const div = document.createElement("div");
 
                             div.innerHTML = `
-                                <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
+                                <span class="entete_color">${data.entete}</span><span class="valid">  ${data.element} ${data.argument.join(" ")}</span>
 
                                 <pre class="color_response">
                                 ++++++                                          
