@@ -32,11 +32,14 @@ function select_menu(e, option) {
     }
 }
 
-export function gen_card(dict) {
+window.select_menu = select_menu;
+
+function gen_card(dict) {
     let card = [];
+    let result = "";
 
     for (const projet of dict) {
-        let result = "";
+        result = ""
         result += `+--[ ${projet.name} ]${"-".repeat(53-(projet.name.length + 7))}+\n`;
         result += `|                                                    |\n`
 
@@ -66,5 +69,4 @@ export function gen_card(dict) {
     }
     return card
 }
-
-window.select_menu = select_menu;
+export { gen_card };
