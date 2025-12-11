@@ -1,3 +1,6 @@
+import { project} from "./projet.js";
+import { gen_card } from "../script/utils.js";
+
 const virtual_path = {
     "~": {
         "type": "folder",
@@ -84,77 +87,9 @@ Front-End (HTML, CSS, JS)
                                 <span class="entete_color">${data["entete"]}</span><span class="valid">  ${data["element"]} ${data["argument"].join(" ")}</span>
                                 <div>
                                     <div class="color_response card">
-                                <pre class="projet-card">
-+--[ Projet ]--+
-+--[ Radio-Stream ]----------------------------------+
-|                                                    |
-|  Scrappe les flux de radios françaises et les rend |
-|  accessibles via une page web interactive avec un  |
-|  lecteur, une recherche et des sauvegardes.        |
-|  Tech: Flask, bs4, Requests, HTML/CSS/JS           |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ Vote-Bot ]--------------------------------------+
-|                                                    |
-|  Automatise les votes sur des serveurs de jeu      |
-|  pour obtenir des récompenses, le tout piloté      |
-|  par un panel de contrôle web.                     |
-|  Tech: Selenium, Flask, HTML/CSS/JS                |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ Bot-JDR ]---------------------------------------+
-|                                                    |
-|  Bot Discord conçu pour le jeu de rôle, permettant |
-|  de sauvegarder et d'interagir avec des fiches de  |
-|  personnages et des inventaires, lancer de dé.     |
-|  Tech: discord.py, JSON                            |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ BotyBot ]---------------------------------------+
-|                                                    |
-|  Un bot de modération complet pour Discord,        |
-|  incluant un système de tickets et les commandes   |
-|  essentielles (ban, kick, mute).                   |
-|  Tech: discord.py, SQLite                          |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ Bbox-api ]--------------------------------------+
-|                                                    |
-|  Une API Python pour interagir avec la Bbox et     |
-|  configurer programmatiquement les règles du       |
-|  pare-feu (NAT/PAT).                               |
-|  Tech: Python, Requests                            |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ Crackers ]--------------------------------------+
-|                                                    |
-|  Une aplication de scrapping qui recherche et      |
-|  recherche les cracks de jeux vidéo disponibles    |
-|  sur différentes sources web.                      |
-|  Tech: Python, bs4, Requests                       |
-|                                                    |
-+----------------------------------------------------+
-</pre>
-<pre class="projet-card hide_card">
-+--[ NetflixKode-expired ]---------------------------+
-|                                                    |
-|  Script pour modifier ou retrouver le mot de passe |
-|  d'une clé de connexion pour une extension Netlfix |
-|  Kodi en utilisant des techniques de cryptographie.|
-|  Tech: Python, PyCryptodome                        |
-|                                                    |
-+----------------------------------------------------+
-                                </pre>
+                                    ${gen_card(project).map((item, index) => {
+                                        return `<pre class="projet-card ${index === 0 ? '' : 'hide_card'}">${item}</pre>`;
+                                    }).join('\n')}
                                 </div>
                                 <a class="select_response suiv" onclick="select_menu(this.parentElement, false)"><--Précédent</a>
                                 <a class="select_response prec" onclick="select_menu(this.parentElement, true)">Suivant--></a>
