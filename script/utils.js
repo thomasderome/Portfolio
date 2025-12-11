@@ -25,11 +25,46 @@ function select_menu(e, option) {
                             pre[i - 1].classList.remove('movehide_card');
                             pre[i - 1].classList.remove("hide_card");
                         }, 10)
-
                 }, 500)
                 break
             }
         }
     }
 }
+
+export function gen_card(dict) {
+    let card = [];
+
+    for (const projet of dict) {
+        let result = "";
+        result += `+--[ ${projet.name} ]${"-".repeat(53-(projet.name.length + 7))}+\n`;
+        result += `|                                                    |\n`
+
+        let temp = "";
+        for (const word of projet.description.split(' ')) {
+            if (`${temp} ${word}`.length < 48) temp += ` ${word}`;
+            else {
+                result += `| ${temp}${" ".repeat(49 - temp.length)}  |\n`;
+                temp = "";
+            }
+        }
+        result += `|  ${temp}${" ".repeat(48 - temp.length)}  |\n`;
+
+        temp = "Tech: ";
+        for (let i = 0; i < projet.tech.length; i++) {
+            if (`${temp} ${projet.tech[i]}`.length < 48 ) temp += `${projet.tech[i]}`;
+            else {
+                result += `|  ${temp}${" ".repeat(48 - projet.tech.length)}  |\n`;
+                temp = "Tech: ";
+            }
+        }
+        result += `|  ${temp}${" ".repeat(48 - temp.length)}  |\n`;
+        result += `|                                                    |\n`
+        result += "+----------------------------------------------------+"
+
+        card.push(result)
+    }
+    return card
+}
+
 window.select_menu = select_menu;
